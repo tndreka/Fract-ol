@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:42 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/22 21:17:18 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/22 21:26:35 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ int main(int ac, char **av)
 	if (ac == 1)
 		return 0;
 	if (ac == 2)
-		check_av(ac, av);
-	
+		check_av(ac, av);	
 }
