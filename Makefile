@@ -11,7 +11,7 @@
 # # **************************************************************************** #
 
 NAME    := fractol
-CFLAGS  := -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS  := -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 LIBMLX  := ./MLX42
 HEADERS := -I ./include -I $(LIBMLX)/include
 LIBS    := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm

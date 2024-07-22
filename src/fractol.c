@@ -6,37 +6,34 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:42 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/22 03:44:29 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/22 21:17:18 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 #include <stdio.h>
+/*	
+**		PROJECT FRACT-OL
+**	  MANDELBROT  and  JULIA
+**	Fractol is a graphical application designed to explore different patterns of fractal
+** 	Fractals are intriguing patterns that exhibiy self-similarity accros different scales,
+**  meaning that they look similar no matter how much you zoom in or out. 
+*/
 
-// int main()
-// {
-// 	void *mlx_ptr;
-	
-// 	//mlx_set_setting(MLX_MAXIMIZED, true);
-// 	mlx_ptr = mlx_init( WIDTH, HEIGHT, "42BUFU", true);
-// 	if(!mlx_ptr)
-// 		return 1;
-// 	mlx_loop(mlx_ptr);
-	
-// 	printf("HERE");
-// 	return 0;
-// }
-
-int main()
+/*				TO DO
+	MANDELBROT 
+	JULIA
+	CHECK COMMAND LINE ARG for MANDELBROT & JULIA
+	ZOOM WITH MOUSE 
+	ESC - CLOSE THE PROGRAMM
+	NO LEAKS
+*/
+int main(int ac, char **av)
 {
-	t_mlx_ptr *data;
+	if (ac == 1)
+		return 0;
+	if (ac == 2)
+		check_av(ac, av);
 	
-	data->mlx_ptr = mlx_init(WIDTH, HEIGHT, "42BUFU", true);
-	if(!data->mlx_ptr)
-		return 1;
-	mlx_loop(data->mlx_ptr);
-	 
-	
-	return 0;
 }
