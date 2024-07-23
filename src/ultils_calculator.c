@@ -6,43 +6,38 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 01:10:10 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/23 04:13:13 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/23 20:02:13 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+/* NEEd to chec k if the point given is in the mandelbrot scale 
+*/
 
-// double add_sum_re(t_frc x, t_frc y)
-// {
-// 	double	sum_re;
-	
-// 	sum_re = x.re  + y.re;
-// 	return (sum_re);
-// }
 
-// double add_sum_im(t_frc x, t_frc y)
-// {
-// 	double	sum_im;
-	
-// 	sum_im = x.im + y.im;
-// 	return (sum_im);
-// }
+//this function puts the specific range of the complex values of mandelbro
+// X(-2 .. 0.5) [real] || Y(-1 .. 1)[imaginary] and converts it with our 
+// HEIGHT AND WIDTH ==> transform the condinat  -22 to +2 to the scale 800
 
-// int main(void)
-// {
-// 	t_frc x;
-// 	t_frc y;
-
-// 	t_frc x1;
-// 	t_frc y2;
-
-// 	x.re = 1.25;
-// 	y.im = 1.25;
-
-// 	x1.re = 1.25;
-// 	y2.im = 0.25;
-	
-// 	printf("the real sum = %f\n", add_sum_re(x, x1));
-// 	printf("the real sum = %f\n", add_sum_im(y, y2));
+void pixel_trick(int x, int y, t_frac *fractal)
+{
 		
-// }
+}
+
+void fractol(t_frac *fractal)
+{
+	int x;
+	int y;
+
+	y = -1;
+	while(HEIGHT > y)
+	{
+		x = -1;
+		while(WIDTH > x)
+		{
+			pixel_trick(x, y, fractal)''
+			x++;
+		}
+		y++;
+	}
+}

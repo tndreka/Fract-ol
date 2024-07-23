@@ -6,11 +6,13 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:08:44 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/23 15:41:15 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/23 18:06:52 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+// void draw_mandel(mlx_t *mlx, t_frac *mb);
 
 int		ft_strcmp(char *s1, char *s2, int n)
 {
@@ -48,14 +50,13 @@ int	check_av(int ac, char **av)
 	{
 		mlx = mlx_init(WIDTH, HEIGHT, "FRACT-OL", true);
 		mb = malloc(sizeof(t_frac));
-		init_mandel(mlx, mb);
-		draw_mandel(mlx, mb);
+		init_mandel(mb, mlx);
+		// draw_mandel(mlx, mb);
 	    mlx_loop(mlx);
         free(mb);
     
     }
-
-	if (ac == 4 &&  !(ft_strcmp(av[1], "julia", 5)))
+	else if (ac == 4 &&  !(ft_strcmp(av[1], "julia", 5)))
 	{
 		//implement julia
 	}
@@ -63,6 +64,7 @@ int	check_av(int ac, char **av)
 	{
 		ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);	
 		exit(EXIT_FAILURE);
+		
 	}
 	exit(EXIT_SUCCESS);
 }
@@ -81,7 +83,7 @@ int init_mandel(t_frac *mb, mlx_t *mlx)
     	mlx_strerror(mlx_errno);
         return (EXIT_FAILURE);
 	}
-	if(-1 == mlx_image_to_window(mlx, m->image, 0, 0))
+	if(-1 == mlx_image_to_window(mlx, mb->image, 0, 0))
 	{
 		mlx_close_window(mlx);
     	mlx_strerror(mlx_errno);
@@ -89,7 +91,9 @@ int init_mandel(t_frac *mb, mlx_t *mlx)
 	}
     return (0);			
 }
-void draw_mandel(mlx_t *mlx, t_frac *mb)
-{
-	mb->draw = 1;
-}
+// void draw_mandel(mlx_t *mlx, t_frac *mb)
+// {
+// 	// mb->draw = 1;
+// 	(void *) mlx;
+// 	(void *) mb;
+// }
