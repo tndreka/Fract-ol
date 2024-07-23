@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/tndreka/Curriculum_42/fractol/src",
+      "program": "/Users/tndreka/Curriculum_42/fractol/src/build/Debug/outDebug"
+    }
+  ]
+}

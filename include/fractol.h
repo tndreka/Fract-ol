@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:55 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/22 21:19:09 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/23 15:40:45 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,23 @@
 # define WIDTH 500
 # define HEIGHT 500
 
-# define ERROR_MESSAGE "ERROR"
+# define ERROR_MESSAGE "ERROR\n"
 
-typedef struct s_frac
+typedef struct s_frc
 {
-	void		*mlx_ptr;
-	void		*mlx_window;
-	void		*image;
-}			t_frac;
+	double			re;
+	double			im;
+    char 			*name;
+    mlx_t 			*mlx;
+	mlx_image_t		*image;
+	int				*draw;
 
+} t_frac;
 // ARG CHECKER 
-void	check_av(int ac, char **av);
+int	check_av(int ac, char **av);
 
 //UTILS
 void	ft_putstr_fd(char *s, int fd);
 int		ft_strcmp(char *s1, char *s2, int n);
+int		init_mandel(t_frac *mb, mlx_t *mlx);
 #endif
