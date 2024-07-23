@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 01:10:10 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/23 22:33:41 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/23 23:11:21 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,38 @@ double scale_calc(double unsaled_n, double new_min, double new_max, double old_m
 {
 	return (new_max - new_min) * (unsaled_n /old_max) + new_min;
 }
-int main ()
+// int main ()
+// {
+// 	for(int i=0; i < 800; ++i)
+// 	{
+// 	printf("%d -> %f\n",i ,scale_calc((double)i, -2, +2, 799));	
+// 	}
+// }
+
+/*SUM COMPLEX CALCULAOR*/
+
+t_frac sum_complx(t_frac z1, t_frac z2)
 {
-	for(int i=0; i < 800; ++i)
-	{
-	printf("%d -> %f\n",i ,scale_calc((double)i, -2, +2, 799));	
-	}
+	t_frac sum;
+
+	sum.x = z1.x + z2.x;
+	sum.y = z1.y + z2.y;
+	
+	return (sum);
+}
+
+/*
+power
+real = (x ^2 - y^2)
+imaginary = 2 * x * y
+*/
+
+t_frac power_complx(t_frac z)
+{
+	t_frac res;
+
+	res.x = (z.x * z.x) - (z.y * z.y);
+	res.y = 2 * z.x * z.y;
+	
+	return (res);
 }

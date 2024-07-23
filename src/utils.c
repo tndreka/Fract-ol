@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:08:44 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/23 18:06:52 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/23 23:25:53 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,8 @@ int	check_av(int ac, char **av)
 		mlx = mlx_init(WIDTH, HEIGHT, "FRACT-OL", true);
 		mb = malloc(sizeof(t_frac));
 		init_mandel(mb, mlx);
-		// draw_mandel(mlx, mb);
-	    mlx_loop(mlx);
+		mlx_loop(mlx);
         free(mb);
-    
     }
 	else if (ac == 4 &&  !(ft_strcmp(av[1], "julia", 5)))
 	{
@@ -91,9 +89,3 @@ int init_mandel(t_frac *mb, mlx_t *mlx)
 	}
     return (0);			
 }
-// void draw_mandel(mlx_t *mlx, t_frac *mb)
-// {
-// 	// mb->draw = 1;
-// 	(void *) mlx;
-// 	(void *) mb;
-// }
