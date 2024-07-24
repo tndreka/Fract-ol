@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 01:10:10 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/23 23:11:21 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/24 02:54:31 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 /* NEEd to chec k if the point given is in the mandelbrot scale 
 */
 
-#include <stdio.h>
+#include "fractol.h"
 //this function puts the specific range of the complex values of mandelbro
 // X(-2 .. 0.5) [real] || Y(-1 .. 1)[imaginary] and converts it with our 
 // HEIGHT AND WIDTH ==> transform the condinat  -22 to +2 to the scale 800
