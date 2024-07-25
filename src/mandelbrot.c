@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:26:16 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/24 15:02:54 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/24 15:42:27 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void pixel_trick(int x, int y, t_frac *mb)
 	t_frac		z;
 	t_frac		c;
 	int			iterations;
-	uint32_t	color;
-	int			r;
-	int			g;
-	int			b;
-	int			a;
+	t_color		color;
+	// int			r;
+	// int			g;
+	// int			b;
+	// int			a;
 	
 	//the first iteration
 	z.x = 0.0;
@@ -58,12 +58,12 @@ void pixel_trick(int x, int y, t_frac *mb)
 		iterations++;
 	}
 	//get colors
-	r = (iterations * 9) % 256;
-	g = (iterations * 5) % 256;
-	b = (iterations * 3) % 256;
-	a = 255;
-	color = ft_pixel(r, g, b, a);
-	mlx_put_pixel(mb->image, x, y, color);
+	color.channel[0] = (iterations * 9) % 256;
+	color.channel[1] = (iterations * 5) % 256;
+	color.channel[2] = (iterations * 3) % 256;
+	color.channel[3] = 255;
+	// color = ft_pixel(r, g, b, a);
+	mlx_put_pixel(mb->image, x, y, color.color);
 }
 
 void fractol(void *arg)
@@ -74,14 +74,14 @@ void fractol(void *arg)
 
 	mb = (t_frac *)arg;	
 	y = -1;
-	while(y < mb->image->height )
+	while(++y < mb->image->height )
 	{
 		x = -1;
-		while(x < mb->image->width )
+		while(++x < mb->image->width )
 		{
 			pixel_trick(x, y, mb);
-			x++;
+			// x++;
 		}
-		y++;
+		// y++;
 	}
 }

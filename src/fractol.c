@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:42 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/24 15:07:03 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/24 15:42:49 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ int	check_av(int ac, char **av)
 	
 	if (ac == 2 &&  !(ft_strcmp(av[1], "mandelbrot", 10)))
 	{
-		mlx = mlx_init(WIDTH, HEIGHT, "FRACT-OL", true);
+		mlx_set_setting(MLX_STRETCH_IMAGE, true);
+		mlx = mlx_init(HEIGHT, WIDTH, "FRACT-OL", true);
 		mb = malloc(sizeof(t_frac));
 		init_mandel(mb, mlx);
+		fractol((void *)mb);
 		mlx_loop(mlx);
-		mlx_loop_hook(mlx, fractol, mb);
+		// mlx_loop_hook(mlx, fractol, mb);
         free(mb);
     }
 	else if (ac == 4 &&  !(ft_strcmp(av[1], "julia", 5)))
@@ -74,7 +76,6 @@ int init_mandel(t_frac *mb, mlx_t *mlx)
 		mlx_strerror(mlx_errno);
         return (EXIT_FAILURE);
 	}
-	// mlx_set_setting(MLX_STRETCH_IMAGE, mlx);
 	mb->image = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!mb->image)
     {

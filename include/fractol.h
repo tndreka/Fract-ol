@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:55 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/24 02:55:23 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/24 15:26:31 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@
 
 # define WIDTH 1042
 # define HEIGHT 1042
-# define MAXITERATIONS 1000
+# define MAXITERATIONS 32
 # define ERROR_MESSAGE "ERROR\n"
+
+typedef union u_color
+{
+	u_int8_t 		channel[4];
+	u_int32_t		color;
+}				t_color;
 
 typedef struct s_frac
 {
