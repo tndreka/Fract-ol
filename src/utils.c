@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:08:44 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/24 01:55:42 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:57:20 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 // void draw_mandel(mlx_t *mlx, t_frac *mb);
 
-int		ft_strcmp(char *s1, char *s2, int n)
+int	ft_strcmp(char *s1, char *s2, int n)
 {
 	if (s1 == NULL || s2 == NULL || n <= 0)
 		return (0);
-	while (*s1 == *s2 && n > 0  && s2 != (void *)0)
+	while (*s1 == *s2 && n > 0 && s2 != (void *)0)
 	{
 		s1++;
 		s2++;
@@ -27,7 +27,7 @@ int		ft_strcmp(char *s1, char *s2, int n)
 	return (*s1 - *s2);
 }
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int		i;
 
@@ -40,5 +40,3 @@ void ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
-
-

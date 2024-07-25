@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:42 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/24 15:42:49 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/25 21:43:55 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 /*	
 **		PROJECT FRACT-OL
 **	  MANDELBROT  and  JULIA
-**	Fractol is a graphical application designed to explore different patterns of fractal
-** 	Fractals are intriguing patterns that exhibiy self-similarity accros different scales,
+**	Fractol is a graphical application designed to explore different 
+**	patterns of fractal
+** 	Fractals are intriguing patterns that exhibiy self-similarity accros 
+**	different scales,
 **  meaning that they look similar no matter how much you zoom in or out. 
 */
 
@@ -29,23 +31,25 @@
 	ESC - CLOSE THE PROGRAMM
 	NO LEAKS
 */
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac > 2)
-	{  
+	{
 		ft_putstr_fd("choose a fractal name\n", 1);
-    	return (EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
-		check_av(ac, av);
-		return (EXIT_SUCCESS);
-		
+	check_av(ac, av);
+	return (EXIT_SUCCESS);
 }
+
 int	check_av(int ac, char **av)
 {
-	mlx_t	*mlx = NULL;
-	t_frac 	*mb = NULL;
-	
-	if (ac == 2 &&  !(ft_strcmp(av[1], "mandelbrot", 10)))
+	mlx_t	*mlx;
+	t_frac	*mb;
+
+	*mlx = NULL;
+	*mb = NULL;
+	if (ac == 2 && !(ft_strcmp(av[1], "mandelbrot", 10)))
 	{
 		mlx_set_setting(MLX_STRETCH_IMAGE, true);
 		mlx = mlx_init(HEIGHT, WIDTH, "FRACT-OL", true);
@@ -53,41 +57,38 @@ int	check_av(int ac, char **av)
 		init_mandel(mb, mlx);
 		fractol((void *)mb);
 		mlx_loop(mlx);
-		// mlx_loop_hook(mlx, fractol, mb);
-        free(mb);
-    }
-	else if (ac == 4 &&  !(ft_strcmp(av[1], "julia", 5)))
+		free(mb);
+	}
+	else if (ac == 4 && !(ft_strcmp(av[1], "julia", 5)))
 	{
-		//implement julia
 	}
 	else
 	{
-		ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);	
+		ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
 		exit(EXIT_FAILURE);
-		
 	}
 	exit(EXIT_SUCCESS);
 }
 
-int init_mandel(t_frac *mb, mlx_t *mlx)
+int	init_mandel(t_frac *mb, mlx_t *mlx)
 {
-    if (!mlx)
+	if (!mlx)
 	{
 		mlx_strerror(mlx_errno);
-        return (EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
 	mb->image = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!mb->image)
-    {
-		mlx_close_window(mlx);
-    	mlx_strerror(mlx_errno);
-        return (EXIT_FAILURE);
-	}
-	if(-1 == mlx_image_to_window(mlx, mb->image, 0, 0))
 	{
 		mlx_close_window(mlx);
-    	mlx_strerror(mlx_errno);
-        return (EXIT_FAILURE);
+		mlx_strerror(mlx_errno);
+		return (EXIT_FAILURE);
 	}
-    return (0);			
+	if (-1 == mlx_image_to_window(mlx, mb->image, 0, 0))
+	{
+		mlx_close_window(mlx);
+		mlx_strerror(mlx_errno);
+		return (EXIT_FAILURE);
+	}
+	return (0);
 }
