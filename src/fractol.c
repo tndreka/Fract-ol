@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:42 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/25 21:43:55 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/26 20:48:00 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,21 @@ int	check_av(int ac, char **av)
 	mlx_t	*mlx;
 	t_frac	*mb;
 
-	*mlx = NULL;
-	*mb = NULL;
+	mlx = NULL;
+	mb = NULL;
 	if (ac == 2 && !(ft_strcmp(av[1], "mandelbrot", 10)))
 	{
+		mb = malloc(sizeof(t_frac));
+
 		mlx_set_setting(MLX_STRETCH_IMAGE, true);
 		mlx = mlx_init(HEIGHT, WIDTH, "FRACT-OL", true);
-		mb = malloc(sizeof(t_frac));
+		mb->xmin = -2.0;
+		mb->xmax = 2.0;
+		mb->ymin = -2.0;
+		mb->ymax = 2.0;
+		mlx_loop_hook(mlx, fractol, mb);
+		mlx_scroll_hook(mlx, scroll_fractal, (void *)mb);
 		init_mandel(mb, mlx);
-		fractol((void *)mb);
 		mlx_loop(mlx);
 		free(mb);
 	}
@@ -72,7 +78,7 @@ int	check_av(int ac, char **av)
 
 int	init_mandel(t_frac *mb, mlx_t *mlx)
 {
-	if (!mlx)
+	if (!mlx || !mb)
 	{
 		mlx_strerror(mlx_errno);
 		return (EXIT_FAILURE);
@@ -90,5 +96,6 @@ int	init_mandel(t_frac *mb, mlx_t *mlx)
 		mlx_strerror(mlx_errno);
 		return (EXIT_FAILURE);
 	}
-	return (0);
+	mb->mlx = mlx;
+	return (EXIT_SUCCESS);
 }

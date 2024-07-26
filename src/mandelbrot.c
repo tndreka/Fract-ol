@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:26:16 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/25 21:54:35 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/27 00:52:23 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,17 @@ void	pixel_trick(int x, int y, t_frac *mb)
 
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = scale_calc(x, -2, +2, WIDTH);
-	c.y = scale_calc(y, +2, -2, HEIGHT);
+	// c.x = scale_calc(x, -2, +2, WIDTH);
+	// c.y = scale_calc(y, +2, -2, HEIGHT);
+	c.x = scale_calc(x, mb->xmin, mb->xmax, WIDTH);
+	c.y = scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
 	iterations = 0;
-	while (iterations < MAXITERATIONS && ((z.x * z.x) + (z.y * z. y)) <= 4.0)
+	while (iterations < MAXITERATIONS && ((z.x * z.x) + (z.y * z.y)) <= 4.0)
 	{
 		z = sum_complx(power_complx(z), c);
+		// c.x = scale_calc(x, mb->xmin, mb->xmax, WIDTH);
+		// c.y = scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
+		//
 		iterations++;
 	}
 	color.channel[0] = (iterations * 9) % 256;
@@ -74,22 +79,31 @@ void	fractol(void *arg)
 void	scroll_fractal(double xdelta, double ydelta, void *param)
 {
 	t_frac		*mb;
-	mlx_t		*mlx;	
-	double		heigth;
-	double		width;
+	mlx_t		*mlx;
+	int32_t		height;
+	int32_t		width;
 	double		zoom;
 
 	xdelta = 0;
-	z = 0.2;
+	zoom = 0.2;
 	mb = (t_frac *)param;
-	mlx = (t_frac *)param;
-	heigh = mb->xmax - mb->xmin;
-	heigh = mb->ymax - mb->ymin;
+	mlx = (mlx_t *)param;
+	width = mb->xmax - mb->xmin;
+	height = mb->ymax - mb->ymin;
 	if (ydelta > 0)
 	{
-		mb = mb->xmax + width * 
+		mb->xmin = mb->xmin + width * zoom;
+		mb->xmax = mb->xmax - width * zoom;
+		mb->ymin = mb->ymin + height * zoom;
+		mb->ymax = mb->ymax - height * zoom;
 	}
 	else if (ydelta < 0)
 	{
+		mb->xmin = mb->xmin - width * zoom;
+		mb->xmax = mb->xmax + width * zoom;
+		mb->ymin = mb->ymin - height * zoom;
+		mb->ymax = mb->ymax + height * zoom;
 	}
+	  printf("Zooming... xmin: %f, xmax: %f, ymin: %f, ymax: %f\n", mb->xmin, mb->xmax, mb->ymin, mb->ymax);
+	fractol(mb);
 }
