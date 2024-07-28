@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 01:10:10 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/27 01:14:59 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/28 04:28:49 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,6 @@ double	scale_calc(double unsaled_n, double new_min, double new_max,
 {
 	return ((new_max - new_min) * (unsaled_n / old_max) + new_min);
 }
-// int main ()
-// {
-// 	for(int i=0; i < 800; ++i)
-// 	{
-// 	printf("%d -> %f\n",i ,scale_calc((double)i, -2, +2, 799));	
-// 	}
-// }
 
 /*SUM COMPLEX CALCULAOR*/
 

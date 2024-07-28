@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:26:16 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 02:49:28 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/28 04:28:31 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,52 +73,6 @@ void	fractol(void *arg)
 	}
 }
 
-// void	fractol(void *arg)
-// {
-// 	uint32_t	x;
-// 	uint32_t	y;
-// 	t_frac		*mb;
-
-// 	mb = (t_frac *)arg;
-// 	y = mb->image->height;
-// 	while (y-- > 0)
-// 	{
-// 		x = -1;
-// 		while (++x < mb->image->width)
-// 		{
-// 			pixel_trick(x, y, mb);
-// 		}
-// 	}
-// }
-
-// void	scroll_fractal(double xdelta, double ydelta, void *param)
-// {
-// 	t_frac		*mb;
-// 	int32_t		height;
-// 	int32_t		width;
-// 	double		zoom;
-
-// 	xdelta = 0;
-// 	zoom = 0.2;
-// 	mb = (t_frac *)param;
-// 	width = mb->xmax - mb->xmin;
-// 	height = mb->ymax - mb->ymin;
-// 	if (ydelta > 0)
-// 	{
-// 		mb->xmin = mb->xmin + width * zoom;
-// 		mb->xmax = mb->xmax - width * zoom;
-// 		mb->ymin = mb->ymin + height * zoom;
-// 		mb->ymax = mb->ymax - height * zoom;
-// 	}
-// 	else if (ydelta < 0)
-// 	{
-// 		mb->xmin = mb->xmin - width * zoom;
-// 		mb->xmax = mb->xmax + width * zoom;
-// 		mb->ymin = mb->ymin - height * zoom;
-// 		mb->ymax = mb->ymax + height * zoom;
-// 	}
-// }
-
 void	scroll_fractal(double xdelta, double ydelta, void *param)
 {
 	t_frac		*mb;
@@ -144,9 +98,6 @@ void	scroll_fractal(double xdelta, double ydelta, void *param)
 		mb->ymax *= zoom;
 	}
 }
-
-	//   printf("Zooming... xmin: %f, xmax: %f, ymin: %f, ymax: %f\n"
-	// , mb->xmin, mb->xmax, mb->ymin, mb->ymax);
 
 void	ft_escape(mlx_key_data_t keydata, void *param)
 {

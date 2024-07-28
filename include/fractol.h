@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:55 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 04:23:39 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/28 05:05:46 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct s_frac
 }				t_frac;
 // ARG CHECKER
 int				check_av(int ac, char **av);
-// void			start_fractal(t_frac *mb, void(*fractol_function)(void *));
+int				init_mandelbrot(void);
+int				init_julia(char **av);
 
 // UTILS
 void			ft_putstr_fd(char *s, int fd);

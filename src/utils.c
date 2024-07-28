@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:08:44 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 03:51:06 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/28 04:29:00 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,30 +70,3 @@ double	ft_a_to_f(const char *s)
 	}
 	return (res * sign);
 }
-	// long int_p;
-	// double fract_p;
-	// double pow;
-	// int sign;
-
-	// int_p = 0;
-	// fract_p = 0;
-	// sign = 1;
-	// pow = 1;
-	// while((*s >= 9 && *s <= 13) || *s == 32)
-	// 	++s;
-	// while (*s == '+' || *s == '-')
-	// {
-	// 	if(*s++ == '-')
-	// 		sign = -sign;
-	// }
-	// while (*s != '.' && *s)
-	// 	int_p = (int_p * 10) + (*s++ - 48);
-	// if (*s == '.')
-	// 	++s;
-	// while(*s)
-	// {
-	// 	pow /= 10;
-	// 	fract_p = fract_p + (*s++ - 48) * pow;
-	// }
-	// return ((int_p + fract_p) * sign);
-
