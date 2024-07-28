@@ -1,7 +1,0 @@
-/Users/tndreka/Curriculum_42/fractol/build/CMakeFiles/mlx42.dir
-/Users/tndreka/Curriculum_42/fractol/build/CMakeFiles/edit_cache.dir
-/Users/tndreka/Curriculum_42/fractol/build/CMakeFiles/rebuild_cache.dir
-/Users/tndreka/Curriculum_42/fractol/build/CMakeFiles/list_install_components.dir
-/Users/tndreka/Curriculum_42/fractol/build/CMakeFiles/install.dir
-/Users/tndreka/Curriculum_42/fractol/build/CMakeFiles/install/local.dir
-/Users/tndreka/Curriculum_42/fractol/build/CMakeFiles/install/strip.dir
