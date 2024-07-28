@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:26:09 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 03:07:12 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/28 03:49:53 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,23 @@ void	pixel_trick_julia(int x, int y, t_frac *mb)
 {
 	t_frac		z;
 	t_frac		c;
-	int			iterations;
 	t_color		color;
+	int			iterations;
+	double		temp;
 
 	z.x = scale_calc(x, mb->xmin, mb->xmax, WIDTH);
 	z.y = -scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
 	c.x = mb->jx;
 	c.y = mb->jy;
-	// sleep(2);
 	iterations = 0;
 	while (iterations < MAXITERATIONS && ((z.x * z.x) + (z.y * z.y)) <= 4.0)
 	{
-		z = sum_complx(power_complx(z), c);
-		z.x = scale_calc(x, mb->xmin, mb->xmax, WIDTH);
-		z.y = scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
+		// z = sum_complx(power_complx(z), c);
+		// z.x = scale_calc(x, mb->xmin, mb->xmax, WIDTH);
+		// z.y = scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
+		temp = z.x * z.x - z.y * z.y + c.x;
+        z.y = 2 * z.x * z.y + c.y;
+        z.x = temp;
 		iterations++;
 	}
 	color.channel[0] = (iterations * 8) % 256;

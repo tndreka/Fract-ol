@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:42 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 00:40:29 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/28 03:32:03 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@
 	ESC - CLOSE THE PROGRAMM
 	NO LEAKS
 */
-void    leaks(void)
-{    system("leaks fractol");}
+// void	leaks(void)
+// {
+// 	system("leaks fractol");
+// }
 
 int	main(int ac, char **av)
 {
@@ -42,7 +44,7 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	check_av(ac, av);
-	atexit(leaks);
+	// atexit(leaks);
 	return (EXIT_SUCCESS);
 }
 
