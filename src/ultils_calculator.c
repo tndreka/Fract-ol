@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 01:10:10 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/26 17:15:12 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/27 01:14:59 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@
 //its Z(0, 0) so out old min is Z(0,0) ==> so we can remove as the
 // parameter the old_min 
 // because we already know the value ... 
-// double scale_calc(double unsaled_n, double new_min, double new_max, double old_min, double old_max)
+// double scale_calc(double unsaled_n,
+//-- double new_min, double new_max, double old_min, double old_max)
 // {
-//  	return ((new_max - new_min) * (unsaled_n - old_min)/(old_max - old_min) + new_min);
+//return(new_max-new_min)*(unsaled_n-old_min)/(old_max-old_min)+new_min);
 // }
 //int main ()
 // {
@@ -72,32 +73,4 @@ t_frac	power_complx(t_frac z)
 	res.x = (z.x * z.x) - (z.y * z.y);
 	res.y = 2 * z.x * z.y;
 	return (res);
-}
-
-double	atobl(char *s)
-{
-	long	intg;
-	double	frac;
-	double 	pow;
-	int 	sign;
-
-	intg = 0;
-	frac = 0;
-	sign = +1;
-	pow = 1;
-	while ((*s >= 9 && *s <= 13) || *s == 32)
-		++s;
-	while (*s == '+' || *s == '-')
-		if (*s == '-')
-			sign = -1;
-	while (*s != '.' && *s)
-		intg = (intg * 10) + (*s++ - 48);
-	if ('.' == *s)
-		++s;
-	while (*s)
-	{
-		pow /= 10;
-		frac = frac + (*s++ - 48) * pow;
-	}
-	return ((intg + frac) * sign);
 }

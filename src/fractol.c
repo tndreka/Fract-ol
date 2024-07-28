@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:42 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/26 20:48:00 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/28 00:40:29 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,18 @@
 	ESC - CLOSE THE PROGRAMM
 	NO LEAKS
 */
+void    leaks(void)
+{    system("leaks fractol");}
+
 int	main(int ac, char **av)
 {
-	if (ac > 2)
+	if (ac < 2)
 	{
 		ft_putstr_fd("choose a fractal name\n", 1);
 		return (EXIT_FAILURE);
 	}
 	check_av(ac, av);
+	atexit(leaks);
 	return (EXIT_SUCCESS);
 }
 
@@ -52,21 +56,39 @@ int	check_av(int ac, char **av)
 	if (ac == 2 && !(ft_strcmp(av[1], "mandelbrot", 10)))
 	{
 		mb = malloc(sizeof(t_frac));
-
 		mlx_set_setting(MLX_STRETCH_IMAGE, true);
 		mlx = mlx_init(HEIGHT, WIDTH, "FRACT-OL", true);
 		mb->xmin = -2.0;
 		mb->xmax = 2.0;
 		mb->ymin = -2.0;
 		mb->ymax = 2.0;
+		init_mandel(mb, mlx);
 		mlx_loop_hook(mlx, fractol, mb);
 		mlx_scroll_hook(mlx, scroll_fractal, (void *)mb);
-		init_mandel(mb, mlx);
+		mlx_key_hook(mlx, ft_escape, (void *)mb);
 		mlx_loop(mlx);
+		mlx_terminate(mlx);
 		free(mb);
 	}
-	else if (ac == 4 && !(ft_strcmp(av[1], "julia", 5)))
+	printf("HERE11");
+	if (ac == 4 && !(ft_strcmp(av[1], "julia", 5)))
 	{
+		mb = malloc(sizeof(t_frac));
+		mb->jx = ft_a_to_f(av[2]);
+		mb->jy = ft_a_to_f(av[3]);
+		mb->xmin = -1.5;
+		mb->xmax = 1.5;
+		mb->ymin = -1.5;
+		mb->ymax = 1.5;
+		mlx_set_setting(MLX_STRETCH_IMAGE, true);
+		mlx = mlx_init(HEIGHT, WIDTH, "FRACT-OL", true);
+		init_mandel(mb, mlx);
+		mlx_loop_hook(mlx, fractol_julia, mb);
+		mlx_scroll_hook(mlx, scroll_fractal, (void *)mb);
+		mlx_key_hook(mlx, ft_escape, (void *)mb);
+		mlx_loop(mlx);
+		mlx_terminate(mlx);
+		free(mb);
 	}
 	else
 	{

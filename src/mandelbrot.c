@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:26:16 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/27 00:52:23 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/27 17:17:42 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,19 @@ void	pixel_trick(int x, int y, t_frac *mb)
 
 	z.x = 0.0;
 	z.y = 0.0;
-	// c.x = scale_calc(x, -2, +2, WIDTH);
-	// c.y = scale_calc(y, +2, -2, HEIGHT);
 	c.x = scale_calc(x, mb->xmin, mb->xmax, WIDTH);
 	c.y = scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
 	iterations = 0;
 	while (iterations < MAXITERATIONS && ((z.x * z.x) + (z.y * z.y)) <= 4.0)
 	{
 		z = sum_complx(power_complx(z), c);
-		// c.x = scale_calc(x, mb->xmin, mb->xmax, WIDTH);
-		// c.y = scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
-		//
+		c.x = scale_calc(x, mb->xmin, mb->xmax, WIDTH);
+		c.y = scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
 		iterations++;
 	}
-	color.channel[0] = (iterations * 9) % 256;
-	color.channel[1] = (iterations * 5) % 256;
-	color.channel[2] = (iterations * 3) % 256;
+	color.channel[0] = (iterations * 8) % 256;
+	color.channel[1] = (iterations * 0) % 256;
+	color.channel[2] = (iterations * 8) % 256;
 	color.channel[3] = 255;
 	mlx_put_pixel(mb->image, x, y, color.color);
 }
@@ -79,7 +76,6 @@ void	fractol(void *arg)
 void	scroll_fractal(double xdelta, double ydelta, void *param)
 {
 	t_frac		*mb;
-	mlx_t		*mlx;
 	int32_t		height;
 	int32_t		width;
 	double		zoom;
@@ -87,7 +83,6 @@ void	scroll_fractal(double xdelta, double ydelta, void *param)
 	xdelta = 0;
 	zoom = 0.2;
 	mb = (t_frac *)param;
-	mlx = (mlx_t *)param;
 	width = mb->xmax - mb->xmin;
 	height = mb->ymax - mb->ymin;
 	if (ydelta > 0)
@@ -104,6 +99,21 @@ void	scroll_fractal(double xdelta, double ydelta, void *param)
 		mb->ymin = mb->ymin - height * zoom;
 		mb->ymax = mb->ymax + height * zoom;
 	}
-	  printf("Zooming... xmin: %f, xmax: %f, ymin: %f, ymax: %f\n", mb->xmin, mb->xmax, mb->ymin, mb->ymax);
-	fractol(mb);
+}
+
+	//   printf("Zooming... xmin: %f, xmax: %f, ymin: %f, ymax: %f\n"
+	// , mb->xmin, mb->xmax, mb->ymin, mb->ymax);
+
+void	ft_escape(mlx_key_data_t keydata, void *param)
+{
+	t_frac	*mb;
+
+	mb = (t_frac *)param;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
+		mlx_delete_image(mb->mlx, mb->image);
+		mlx_terminate(mb->mlx);
+		free(mb);
+		return (exit(0));
+	}
 }

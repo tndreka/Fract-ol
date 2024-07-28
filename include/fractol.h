@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:55 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/27 00:51:28 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/28 00:09:17 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_frac
 	double		xmax;
 	double		ymin;
 	double		ymax;
+	double		jx;
+	double		jy;
 	char		*name;
 	mlx_t		*mlx;
 	mlx_image_t	*image;
@@ -56,7 +58,9 @@ int				check_av(int ac, char **av);
 // UTILS
 void			ft_putstr_fd(char *s, int fd);
 int				ft_strcmp(char *s1, char *s2, int n);
-double			atobl(char *s);
+int				ft_atoi(const char *str);
+int				ft_strlen(const char *str);
+double			ft_a_to_f(const char *s);
 
 // Mandelbrot
 int				init_mandel(t_frac *mb, mlx_t *mlx);
@@ -64,13 +68,17 @@ void			pixel_trick(int x, int y, t_frac *fractal);
 void			fractol(void *arg);
 uint32_t		ft_pixel(int r, int g, int b, int a);
 
+//Julia
+void			fractol_julia(void *arg);
+void			pixel_trick_julia(int x, int y, t_frac *fractal);
+
 // MATH
 double			scale_calc(double unsaled_n, double new_min, double new_max,
 					double old_max);
 t_frac			sum_complx(t_frac z1, t_frac z2);
 t_frac			power_complx(t_frac z);
-// double scale_calc(double unsaled_n, double new_min, double new_max, double old_min, double old_max);
-// SCROLL HOOK
-// void			scroll_fractal(double xdelta, double ydelta, void *param);
-void	scroll_fractal(double x, double y, void *param);
+
+// HOOK'S
+void			scroll_fractal(double x, double y, void *param);
+void			ft_escape(mlx_key_data_t keydata, void *param);
 #endif
