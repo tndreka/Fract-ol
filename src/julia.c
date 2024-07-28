@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:26:09 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 02:16:13 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/07/28 03:07:12 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	pixel_trick_julia(int x, int y, t_frac *mb)
 	t_color		color;
 
 	z.x = scale_calc(x, mb->xmin, mb->xmax, WIDTH);
-	z.y = scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
+	z.y = -scale_calc(y, mb->ymin, mb->ymax, HEIGHT);
 	c.x = mb->jx;
 	c.y = mb->jy;
 	// sleep(2);
