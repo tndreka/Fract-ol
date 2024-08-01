@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:55 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 05:32:13 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/08/02 00:48:11 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@
 # include "MLX42/MLX42.h"
 # include <math.h>
 # include <stdbool.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 # define WIDTH 1042
 # define HEIGHT 1042
 # define MAXITERATIONS 42
-# define ERROR_MESSAGE "ERROR\n"
+# define ERROR_MESSAGE "You are putting the wrong argument\n"
 # define BLACK	0x000000
 # define WHITE	0xFFFFFF
 # define RED	0xFF0000

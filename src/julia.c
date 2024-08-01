@@ -6,12 +6,14 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:26:09 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 04:29:46 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/08/02 00:09:09 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
+/*
+		p(z)=z^{2}+c
+*/
 void	pixel_trick_julia(int x, int y, t_frac *mb)
 {
 	t_frac		z;

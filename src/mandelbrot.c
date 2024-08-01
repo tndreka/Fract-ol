@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:26:16 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 04:28:31 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/08/02 00:03:27 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	scroll_fractal(double xdelta, double ydelta, void *param)
 
 	xdelta = 0;
 	mb = (t_frac *)param;
-	printf("mb->xmax is : %f\t mb->xmin is : %f\n", mb->xmax, mb->xmin);
 	if (ydelta > 0)
 	{
 		zoom = 1.1;

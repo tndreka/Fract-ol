@@ -6,13 +6,11 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:08:44 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 04:29:00 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/08/01 23:48:46 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-// void draw_mandel(mlx_t *mlx, t_frac *mb);
 
 int	ft_strcmp(char *s1, char *s2, int n)
 {

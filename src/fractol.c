@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 18:45:42 by tndreka           #+#    #+#             */
-/*   Updated: 2024/07/28 05:04:50 by tndreka          ###   ########.fr       */
+/*   Updated: 2024/08/02 00:49:57 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,8 @@
 **  meaning that they look similar no matter how much you zoom in or out. 
 */
 
-/*				TO DO
-	MANDELBROT 
-	JULIA
-	CHECK COMMAND LINE ARG for MANDELBROT & JULIA
-	ZOOM WITH MOUSE 
-	ESC - CLOSE THE PROGRAMM
-	NO LEAKS
+/*				
 */
-// void	leaks(void)
-// {
-// 	system("leaks fractol");
-//	atexit(leaks);
-// }
 
 int	main(int ac, char **av)
 {
